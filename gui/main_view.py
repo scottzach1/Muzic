@@ -1,5 +1,7 @@
 import gi
 
+from gui.label import AlbumLabel
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf
 
@@ -22,14 +24,6 @@ class MainGrid(Gtk.ScrolledWindow):
         button_label = 'Button'
 
         for i in range(100):
-            pix_buf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-                filename="gui/folder.jpg",
-                width=200,
-                height=200,
-                preserve_aspect_ratio=True
-            )
-            image = Gtk.Image.new_from_pixbuf(pix_buf)
-            # if i == 0:
-            #     print(dir(image.props))
-            #     print(image.size_request())
-            self.flowbox.add(image)
+            self.flowbox.add(AlbumLabel())
+
+
