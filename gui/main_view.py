@@ -1,22 +1,35 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 
 
-class MainGrid(Gtk.FlowBox):
+class MainGrid(Gtk.ScrolledWindow):
 
     def __init__(self):
-        Gtk.FlowBox.__init__(self)
-        self.set_valign(Gtk.Align.START)
-        self.set_max_children_per_line(30)
-        self.set_selection_mode(Gtk.SelectionMode.NONE)
+        Gtk.ScrolledWindow.__init__(self)
+
+        self.flowbox = Gtk.FlowBox()
+        self.flowbox.set_valign(Gtk.Align.START)
+        self.flowbox.set_max_children_per_line(30)
+        self.flowbox.set_selection_mode(Gtk.SelectionMode.NONE)
 
         self.populate_flowbox()
+
+        self.add(self.flowbox)
 
     def populate_flowbox(self):
         button_label = 'Button'
 
-        for i in range(50):
-            button = Gtk.Label(label=button_label)
-            self.add(button)
+        for i in range(100):
+            pix_buf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+                filename="gui/folder.jpg",
+                width=200,
+                height=200,
+                preserve_aspect_ratio=True
+            )
+            image = Gtk.Image.new_from_pixbuf(pix_buf)
+            # if i == 0:
+            #     print(dir(image.props))
+            #     print(image.size_request())
+            self.flowbox.add(image)
