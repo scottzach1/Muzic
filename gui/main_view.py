@@ -1,9 +1,9 @@
 import gi
 
-from gui.label import AlbumLabel
+from gui.album_label import AlbumLabel
+from gi.repository import Gtk
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GdkPixbuf
 
 
 class MainGrid(Gtk.ScrolledWindow):
@@ -11,19 +11,26 @@ class MainGrid(Gtk.ScrolledWindow):
     def __init__(self):
         Gtk.ScrolledWindow.__init__(self)
 
-        self.flowbox = Gtk.FlowBox()
-        self.flowbox.set_valign(Gtk.Align.START)
-        self.flowbox.set_max_children_per_line(30)
-        self.flowbox.set_selection_mode(Gtk.SelectionMode.NONE)
+        self.contents = Gtk.VBox()
 
-        self.populate_flowbox()
+        self.first_half = Gtk.FlowBox()
+        self.first_half.set_valign(Gtk.Align.START)
+        self.first_half.set_max_children_per_line(30)
+        self.first_half.set_selection_mode(Gtk.SelectionMode.NONE)
 
-        self.add(self.flowbox)
+        self.populate_flowbox(self.first_half, "gui/folder.jpg")
+        self.contents.pack_start(self.first_half, True, True, 0)
 
-    def populate_flowbox(self):
-        button_label = 'Button'
+        self.second_half = Gtk.FlowBox()
+        self.second_half.set_valign(Gtk.Align.START)
+        self.second_half.set_max_children_per_line(30)
+        self.second_half.set_selection_mode(Gtk.SelectionMode.NONE)
 
-        for i in range(100):
-            self.flowbox.add(AlbumLabel())
+        self.populate_flowbox(self.second_half, "gui/folder2.jpg")
+        self.contents.pack_end(self.second_half, True, True, 0)
 
+        self.add(self.contents)
 
+    def populate_flowbox(self, flowbox, fname):
+        for i in range(50):
+            flowbox.add(AlbumLabel(fname))
