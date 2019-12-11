@@ -17,7 +17,8 @@ class AlbumLabel(Gtk.VBox):
         )
 
         self.image = Gtk.Image.new_from_pixbuf(pix_buf)
-        self.label = Gtk.Label(label="Battle Born\nThe Killers")
+        self.label = Gtk.Label()
+        self.label.set_markup("<b>Battle Born</b>\nThe Killers")
 
         self.pack_start(self.image, True, True, 0)
         self.pack_end(self.label, True, True, 0)
