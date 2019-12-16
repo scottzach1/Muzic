@@ -43,7 +43,8 @@ class SelectedAlbum(Gtk.Frame):
         color = button.get_style_context().get_background_color(Gtk.StateFlags.NORMAL)
         self.override_background_color(self.get_state(), color)
 
-    def generate_songs(self):
+    @staticmethod
+    def generate_songs():
         colum_box = Gtk.HBox()
 
         track_cols = []
@@ -53,9 +54,11 @@ class SelectedAlbum(Gtk.Frame):
 
         for col_no in range(len(track_cols)):
             col = track_cols[col_no]
+
             for track_no in range(1, 7):
                 song_label = SongLabel(track_no)
                 col.pack_start(song_label, True, True, 3)
+
             colum_box.pack_start(col, True, True, 0)
             colum_box.set_valign(Gtk.Align.START)
 
@@ -74,7 +77,6 @@ class SelectedAlbum(Gtk.Frame):
             preserve_aspect_ratio=True
         )
         return Gtk.Image.new_from_pixbuf(pix_buf)
-
 
 
 class SongLabel(Gtk.HBox):

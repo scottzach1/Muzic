@@ -6,7 +6,7 @@ from gi.repository import Gtk, GdkPixbuf
 
 class AlbumLabel(Gtk.VBox):
 
-    def __init__(self, fname):
+    def __init__(self, name, fname):
         Gtk.VBox.__init__(self)
 
         pix_buf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
@@ -18,7 +18,7 @@ class AlbumLabel(Gtk.VBox):
 
         self.image = Gtk.Image.new_from_pixbuf(pix_buf)
         self.label = Gtk.Label()
-        self.label.set_markup("<b>Battle Born</b>\nThe Killers")
+        self.label.set_markup("<b>"+str(name)+"</b>\nThe Killers")
 
         self.pack_start(self.image, True, True, 0)
         self.pack_end(self.label, True, True, 0)

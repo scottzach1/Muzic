@@ -15,7 +15,7 @@ class MainWindow(Gtk.Window):
 
         header = Gtk.HeaderBar(title="Muzic")
         header.set_subtitle("A Simple Muzic Player")
-        header.props.show_close_button = True
+        # header.props.show_close_button = True
 
         self.set_titlebar(header)
 

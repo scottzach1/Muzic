@@ -21,7 +21,7 @@ class MainGrid(Gtk.ScrolledWindow):
         self.first_half.set_max_children_per_line(30)
         self.first_half.set_selection_mode(Gtk.SelectionMode.NONE)
 
-        self.populate_flowbox(self.first_half, "gui/folder.jpg")
+        self.populate_flowbox(self.first_half, "Battle Born", "gui/folder.jpg")
         self.contents.pack_start(self.first_half, True, True, 0)
 
         self.second_half = Gtk.FlowBox()
@@ -30,13 +30,13 @@ class MainGrid(Gtk.ScrolledWindow):
         self.second_half.set_selection_mode(Gtk.SelectionMode.NONE)
 
         self.selected_album = SelectedAlbum("gui/folder.jpg")
-        self.contents.pack_start(self.selected_album, True, True, 0)
+        self.contents.pack_start(self.selected_album, True, False, 0)
 
-        self.populate_flowbox(self.second_half, "gui/folder2.jpg")
+        self.populate_flowbox(self.second_half, "Direct Hits", "gui/folder2.jpg")
         self.contents.pack_start(self.second_half, True, True, 0)
 
         self.add(self.contents)
 
-    def populate_flowbox(self, flowbox, fname):
-        for i in range(15):
-            flowbox.add(AlbumLabel(fname))
+    def populate_flowbox(self, flowbox, name, fname):
+        for i in range(27):
+            flowbox.add(AlbumLabel(name, fname))
