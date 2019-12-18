@@ -27,7 +27,7 @@ class SelectedAlbum(Gtk.Frame):
         self.header_splitter.set_hexpand(True)
 
         # Adds album art.
-        self.album_art = self.generate_album_art("gui/folder.jpg")
+        self.album_art = self.generate_album_art(fname)
         self.album_art.set_halign(Gtk.Align.END)
 
         # Add components to main view.

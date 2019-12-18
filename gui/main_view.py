@@ -35,7 +35,7 @@ class MainGrid(Gtk.ScrolledWindow):
         self.first_half.set_valign(Gtk.Align.START)
         self.first_half.set_selection_mode(Gtk.SelectionMode.NONE)
 
-        self.selected_album = SelectedAlbum("gui/folder.jpg")
+        self.selected_album = SelectedAlbum("gui/folder2.jpg")
 
         self.second_half = Gtk.FlowBox()
         self.second_half.set_max_children_per_line(30)
@@ -84,4 +84,4 @@ class MainGrid(Gtk.ScrolledWindow):
             self.first_half.remove(child)
         print('num_left => ' + str(len(self.first_half.get_children())))
         for child in self.selected_album.get_children():
-            self.selected_album.remove(child)
+            self.second_half.remove(child)

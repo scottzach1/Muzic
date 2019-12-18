@@ -25,4 +25,5 @@ class MainWindow(Gtk.Window):
         self.show_all()
 
     def resized(self, window):
-        self.main_grid.resize()
+        # self.main_grid.resize()
+        pass
