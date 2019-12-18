@@ -61,7 +61,7 @@ class MainGrid(Gtk.ScrolledWindow):
         self.resizing = False
 
     def add_components(self):
-        allocated_width = 1673  # self.first_half.get_allocated_width()
+        allocated_width = 1500  # 1673  # self.first_half.get_allocated_width()
         num_cols = int(allocated_width / 200)
         selected_index = 27
         num_first_half = int(selected_index + num_cols - (selected_index % num_cols))
